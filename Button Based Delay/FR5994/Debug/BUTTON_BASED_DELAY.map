@@ -1,7 +1,7 @@
 ******************************************************************************
                   MSP430 Linker PC v16.9.4                     
 ******************************************************************************
->> Linked Fri Oct 13 20:48:03 2017
+>> Linked Sat Oct 14 12:15:08 2017
 
 OUTPUT FILE NAME:   <BUTTON_BASED_DELAY.out>
 ENTRY POINT SYMBOL: "_c_int00_noinit_noargs_noexit_mpu"  address: 00004038
