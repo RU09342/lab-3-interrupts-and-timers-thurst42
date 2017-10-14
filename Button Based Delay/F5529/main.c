@@ -2,7 +2,6 @@
 
 
 
-int a = 1000000;
 
 int main(void)
 {
@@ -19,7 +18,7 @@ int main(void)
 
       TACCTL0 = CCIE;
       TA0CTL = TASSEL_2 + MC_1 + ID_3;  // Use SMCLK in up mode, /8 divider
-      TACCR0 = a; // set interupt value
+      TACCR0 = 100000; // set interupt value
       TA0CCTL0 &= 0x10; // set compare mode
 
 
@@ -28,21 +27,35 @@ int main(void)
       while(1)
               {} // run loop}
 }
-
-
-#pragma vector=PORT1_VECTOR
-__interrupt void button(void) {
-P1OUT ^= (BIT6);
-P1IFG &= ~BIT3;
-int a = 100000;
-
-
-}
-
 #pragma vector=TIMER0_A0_VECTOR
 __interrupt void blink(void){ //interrupt function
     P1OUT ^= (BIT0);   // Toggle P1.6 (LED)
 }
+
+
+#pragma vector=PORT1_VECTOR
+__interrupt void button(void) {
+
+    if (!(P1IN & BIT3))
+       {
+
+           TA1CTL = TASSEL_2 + MC_2 + ID_3 + TACLR; // Start timer 2
+           P1IES &= ~BIT3; // rising edge mode
+       }
+       else
+       {
+           TA1CTL = MC_0; // stop timer 1
+           TA0CCR0 = TA1R; // set timer 1 value to timer 0 capture compare register
+           TA0CTL = TASSEL_2 + MC_1 + ID_3 + TACLR; // start timer 0 up mode
+           TA1R = 0; // Set TA1R to 0
+
+           P1IES |= BIT3; // Set falling interrupt
+       }
+       P1IFG &= ~BIT3; // Reset interrupt flag
+   }
+
+
+
 
 
 

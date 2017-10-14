@@ -30,7 +30,9 @@ There are no external dependencies that need to be used in order for this
 code to function as intended. Just the standerd MSP430.h header file.
 
 ## Errors
-No known errors
+The only known errors in this lab have to do with the bounce of the mechanical 
+switch. This can be fixed with a simple hardware RC circuit ot in software. 
+This issue was not fixed in this lab.
 
 ## Tasks
 
@@ -67,9 +69,36 @@ Recreate lab 2 led blink using TIMER A instead of a counter.
 
 # Button Based Delay
 
-## 
+## Introduction
 
-Introduction.
+In this lab we were asked to control the frequancy at which one of the one board led's blinked
+with one of the on board buttons. In order to do this we needed to initialize two timers.
+One that controlled the interrupt that blinked the led, and one that counted for the duration of the button 
+press. On startup timer a0 is set to blink the led at a set rate of 10hz. Once the on board led has been 
+pressed, timer a1 counts till the falling edge of the button. Then the value in the TA1R becomes the 
+value in the timer a0 capture and comapre register.
+
+##Implimented Devices
+* MSP430F5529
+* MSP430FR2311
+* MSP430FR5994
+* MSP430FR6989
+* MSP430G2553
+
+
+## Tasks
+Control the blinking speed of an led with a button. The duration of the button press is to be the delay in the 
+button blink cycle. 
+
+
+
+
+
+
+
+
+
+
 
 
 

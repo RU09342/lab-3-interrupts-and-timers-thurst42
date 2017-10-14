@@ -23,6 +23,6 @@ int main(void)
 #pragma vector=PORT1_VECTOR
 __interrupt void Port_1(void)
 {
-   P7OUT ^= BIT7;                      // Toggle P1.6
+   P4OUT ^= BIT7;                      // Toggle P1.6
    P1IFG &= ~BIT1;                     // P1.3 IFG cleared
 }
