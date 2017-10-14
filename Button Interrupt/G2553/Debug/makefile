@@ -120,33 +120,33 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXE_OUTPUTS += \
-Button_Interupt.out \
+BUTTON_INTERRUPT.out \
 
 EXE_OUTPUTS__QUOTED += \
-"Button_Interupt.out" \
+"BUTTON_INTERRUPT.out" \
 
 BIN_OUTPUTS += \
-Button_Interupt.hex \
+BUTTON_INTERRUPT.hex \
 
 BIN_OUTPUTS__QUOTED += \
-"Button_Interupt.hex" \
+"BUTTON_INTERRUPT.hex" \
 
 
 # All Target
 all: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
-	@$(MAKE) --no-print-directory -Onone "Button_Interupt.out"
+	@$(MAKE) --no-print-directory -Onone "BUTTON_INTERRUPT.out"
 
 # Tool invocations
-Button_Interupt.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
+BUTTON_INTERRUPT.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: MSP430 Linker'
-	"C:/ti/ccsv7/tools/compiler/ti-cgt-msp430_16.9.4.LTS/bin/cl430" -vmsp --use_hw_mpy=none --advice:power=all --define=__MSP430G2553__ -g --printf_support=minimal --diag_warning=225 --diag_wrap=off --display_error_number -z -m"Button_Interupt.map" --heap_size=80 --stack_size=80 -i"C:/ti/ccsv7/ccs_base/msp430/include" -i"C:/ti/ccsv7/tools/compiler/ti-cgt-msp430_16.9.4.LTS/lib" -i"C:/ti/ccsv7/tools/compiler/ti-cgt-msp430_16.9.4.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Button_Interupt_linkInfo.xml" --use_hw_mpy=none --rom_model -o "Button_Interupt.out" $(ORDERED_OBJS)
+	"C:/ti/ccsv7/tools/compiler/ti-cgt-msp430_16.9.4.LTS/bin/cl430" -vmsp --use_hw_mpy=none --advice:power=all --define=__MSP430G2553__ -g --printf_support=minimal --diag_warning=225 --diag_wrap=off --display_error_number -z -m"BUTTON_INTERRUPT.map" --heap_size=80 --stack_size=80 -i"C:/ti/ccsv7/ccs_base/msp430/include" -i"C:/ti/ccsv7/tools/compiler/ti-cgt-msp430_16.9.4.LTS/lib" -i"C:/ti/ccsv7/tools/compiler/ti-cgt-msp430_16.9.4.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="BUTTON_INTERRUPT_linkInfo.xml" --use_hw_mpy=none --rom_model -o "BUTTON_INTERRUPT.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-Button_Interupt.hex: $(EXE_OUTPUTS)
+BUTTON_INTERRUPT.hex: $(EXE_OUTPUTS)
 	@echo 'Invoking: MSP430 Hex Utility'
-	"C:/ti/ccsv7/tools/compiler/ti-cgt-msp430_16.9.4.LTS/bin/hex430" --memwidth=8 --romwidth=8 -o "Button_Interupt.hex" $(EXE_OUTPUTS__QUOTED)
+	"C:/ti/ccsv7/tools/compiler/ti-cgt-msp430_16.9.4.LTS/bin/hex430" --memwidth=8 --romwidth=8 -o "BUTTON_INTERRUPT.hex" $(EXE_OUTPUTS__QUOTED)
 	@echo 'Finished building: $@'
 	@echo ' '
 
